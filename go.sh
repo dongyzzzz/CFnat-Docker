@@ -11,6 +11,7 @@ echo "转发端口(port): $port" >> cfnat.log
 echo "有效IP数(ipnum): $ipnum" >> cfnat.log
 echo "负载IP数(num): $num" >> cfnat.log
 echo "最大并发请求数(task): $task" >> cfnat.log
+echo "检查域名(domain): $domain" >> cfnat.log
 
 while true
 do
@@ -27,7 +28,8 @@ do
         -num="$num" \
         -random="$random" \
         -task="$task" \
-        -tls="$tls"
+        -tls="$tls" \
+        -domain="$domain"
     # 记录崩溃信息
     echo "$(date '+%Y-%m-%d %H:%M:%S') - cfnat 崩溃，5 秒后重启..." >> cfnat.log
     # 等待 5 秒后重启

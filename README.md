@@ -28,25 +28,25 @@ docker run -d -e colo="SJC,LAX" -e delay=300 -e ips=4 -p 1234:1234 cmliu/cfnat:l
 - 有效IP数(ipnum): 10
 - 负载IP数(num): 10
 - 最大并发请求数(task): 100
+- 检查域名(domain): "cloudflaremirrors.com/debian"
 ```shell
 docker run -d \
--e colo="LAX" \
--e delay=300 \
--e ips=4 \
--e port=80 \
--e tls=false \
--e random=true \
--e ipnum=10 \
--e num=10 \
--e task=100 \
--p 1234:1234 \
-cmliu/cfnat:latest
+    -e colo="LAX" \
+    -e delay=300 \
+    -e ips=4 \
+    -e port=80 \
+    -e tls=false \
+    -e random=true \
+    -e ipnum=10 \
+    -e num=10 \
+    -e task=100 \
+    -e domain="cloudflaremirrors.com/debian" \
+    -p 1234:1234 \
+    cmliu/cfnat:latest
 ```
 
 ## 参数说明
 ```
-  -addr string
-        服务端口: 本地监听的 IP 和端口 (default "0.0.0.0:1234")
   -code int
         HTTP/HTTPS 响应状态码 (default 200)
   -colo string

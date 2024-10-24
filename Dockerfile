@@ -9,7 +9,8 @@ ENV colo="SJC,LAX,HKG" \
     port="443" \
     random="true" \
     task="100" \
-    tls="true"
+    tls="true" \
+    domain="cloudflaremirrors.com/debian"
 
 # 复制相关文件到容器根目录
 COPY cfnat-linux-amd64 ./cfnat-linux-amd64
