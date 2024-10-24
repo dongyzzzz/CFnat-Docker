@@ -14,6 +14,7 @@ ENV colo="SJC,LAX,HKG" \
 
 # 复制相关文件到容器根目录
 COPY cfnat-linux-amd64 ./cfnat-linux-amd64
+COPY cfnat-linux-arm64 ./cfnat-linux-arm64
 COPY go.sh ./go.sh
 COPY ips-v4.txt ./ips-v4.txt
 COPY ips-v6.txt ./ips-v6.txt
@@ -23,7 +24,7 @@ COPY locations.json ./locations.json
 RUN apk add --no-cache bash
 
 # 赋予可执行权限
-RUN chmod +x ./cfnat-linux-amd64 ./go.sh
+RUN chmod +x ./cfnat-linux-amd64 ./cfnat-linux-arm64 ./go.sh
 
 # 暴露 1234 端口
 EXPOSE 1234

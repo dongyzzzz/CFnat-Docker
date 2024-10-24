@@ -3,10 +3,10 @@ name: Docker Build and Push
 on:
   push:
     branches: [ "main" ]  # 当main分支有推送时触发
-    tags: [ 'v*' ]       # 当推送v开头的tag时触发
+    tags: [ 'v*' ]        # 当推送v开头的tag时触发
   pull_request:
     branches: [ "main" ]  # 当main分支有PR时触发
-  
+
   # 允许从Actions页面手动触发
   workflow_dispatch:
 
@@ -23,9 +23,16 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           
-      - name: Build and push Docker image
+      - name: Set up QEMU  # 用于多平台编译
+        uses: docker/setup-qemu-action@v2
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push multi-arch Docker image
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
+          platforms: linux/amd64,linux/arm64  # 指定多架构
           tags: cmliu/cfnat:latest
