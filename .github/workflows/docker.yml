@@ -2,12 +2,10 @@ name: Docker Build and Push
 
 on:
   push:
-    branches: [ "main" ]  # 当main分支有推送时触发
-    tags: [ 'v*' ]        # 当推送v开头的tag时触发
-  pull_request:
-    branches: [ "main" ]  # 当main分支有PR时触发
-
-  # 允许从Actions页面手动触发
+    branches: [ "main" ]
+    paths:
+      - "Dockerfile"
+      - "go.sh"
   workflow_dispatch:
 
 jobs:

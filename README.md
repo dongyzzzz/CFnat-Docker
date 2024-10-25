@@ -12,12 +12,28 @@ docker run -d --name mycfnat -p 1234:1234 cmliu/cfnat:latest
 docker run -d -e colo="HKG" -e delay=160 -e ips=6 -p 1234:1234 cmliu/cfnat:latest
 ```
 
+----
+
+- 数据中心(colo): HKG
+- 有效延迟(delay): 160
+- IP类型(ips): 4
+- 转发端口(port): 80
+- tls: false
+- **本地映射端口: 80**
+```shell
+docker run -d -e colo="HKG" -e delay=160 -e ips=4 -e port=80 -e tls=false -p 80:1234 cmliu/cfnat:latest
+```
+
+----
+
 - 数据中心(colo): SJC,LAX
 - 有效延迟(delay): 300
 - IP类型(ips): 4
 ```shell
 docker run -d -e colo="SJC,LAX" -e delay=300 -e ips=4 -p 1234:1234 cmliu/cfnat:latest
 ```
+
+----
 
 - 数据中心(colo): LAX
 - 有效延迟(delay): 300
@@ -44,6 +60,17 @@ docker run -d \
     -p 1234:1234 \
     cmliu/cfnat:latest
 ```
+
+## 查看日志
+```shell
+# 查看cfnat容器执行日志
+docker logs 容器ID
+docker logs -f 容器ID    # 实时查看日志
+
+# 查看cfnat容器启动日志
+docker exec 容器ID cat cfnat.log
+```
+
 
 ## 参数说明
 ```
