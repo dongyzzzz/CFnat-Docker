@@ -1,25 +1,18 @@
-#!/bin/bash
+#!/bin/sh
 
 # 检测系统架构
 ARCH=$(uname -m)
-case "$ARCH" in
-    aarch64|arm64)
-        CFNAT_BINARY="./cfnat-linux-arm64"
-        ;;
-    *)
-        CFNAT_BINARY="./cfnat-linux-amd64"
-        ;;
-esac
+CFNAT_BINARY='./cfnat'
+colo_upper=$(echo "$colo" | tr '[:lower:]' '[:upper:]')
 
 # 记录启动信息
 {
 echo "系统架构: $ARCH"
 echo "使用二进制文件: $CFNAT_BINARY"
-echo "使用以下配置启动 cfnat:"
 echo "IP类型(ips): $ips"
 echo "TLS: $tls"
 echo "随机IP(random): $random"
-echo "数据中心(colo): $colo"
+echo "数据中心(colo): $colo_upper"
 echo "有效延迟(delay): $delay"
 echo "转发端口(port): $port"
 echo "有效IP数(ipnum): $ipnum"
@@ -35,7 +28,7 @@ do
     
     # 运行主程序 - 使用检测到的正确二进制文件
     $CFNAT_BINARY \
-        -colo="${colo^^}" \
+        -colo="$colo_upper" \
         -port="$port" \
         -delay="$delay" \
         -ips="$ips" \

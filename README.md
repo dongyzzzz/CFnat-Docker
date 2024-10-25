@@ -19,9 +19,9 @@ docker run -d -e colo="HKG" -e delay=160 -e ips=6 -p 1234:1234 cmliu/cfnat:lates
 - IP类型(ips): 4
 - 转发端口(port): 80
 - tls: false
-- **本地映射端口: 80**
+- **本地映射端口: 8080**
 ```shell
-docker run -d -e colo="HKG" -e delay=160 -e ips=4 -e port=80 -e tls=false -p 80:1234 cmliu/cfnat:latest
+docker run -d -e colo="HKG" -e delay=160 -e ips=4 -e port=80 -e tls=false -p 8080:1234 cmliu/cfnat:latest
 ```
 
 ----
@@ -97,3 +97,6 @@ docker exec 容器ID cat cfnat.log
   -task int
         最大并发请求数: 并发请求最大协程数 (default 100)
 ```
+
+# 致谢
+[gdfsnhsw](https://github.com/gdfsnhsw/CFnat-Docker)、[股神](https://t.me/CF_NAT/38840)、ChatGPT

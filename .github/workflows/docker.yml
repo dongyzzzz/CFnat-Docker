@@ -32,5 +32,5 @@ jobs:
         with:
           context: .
           push: true
-          platforms: linux/amd64,linux/arm64  # 指定多架构
+          platforms: linux/amd64,linux/arm64,linux/386,linux/arm/v6,linux/arm/v7
           tags: cmliu/cfnat:latest
