@@ -18,6 +18,7 @@ echo "转发端口(port): $port"
 echo "有效IP数(ipnum): $ipnum"
 echo "负载IP数(num): $num"
 echo "最大并发请求数(task): $task"
+echo "响应状态码(code): $code"
 echo "检查域名(domain): $domain"
 } >> cfnat.log
 
@@ -38,6 +39,7 @@ do
         -random="$random" \
         -task="$task" \
         -tls="$tls" \
+        -code="$code" \
         -domain="$domain"
 
     # 检查执行是否成功

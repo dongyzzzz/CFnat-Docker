@@ -49,6 +49,7 @@ ENV colo="SJC,LAX,HKG" \
     random="true" \
     task="100" \
     tls="true" \
+    code="200" \
     domain="cloudflaremirrors.com/debian"
 
 # 暴露 1234 端口

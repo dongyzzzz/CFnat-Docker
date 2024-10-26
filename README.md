@@ -23,6 +23,7 @@ services:
       - ipnum=10  # 提取的有效IP数量
       - num=10  # 目标负载 IP 数量
       - task=100  # 并发请求最大协程数
+      - code=200  # HTTP/HTTPS 响应状态码
       - domain=cloudflaremirrors.com/debian # 响应状态码检查的域名地址
     ports:
       - "1234:1234"  # 将主机的 1234 端口映射到容器的 1234 端口
@@ -69,6 +70,7 @@ docker run -d -e colo="SJC,LAX" -e delay=300 -e ips=4 -p 1234:1234 cmliu/cfnat:l
 - 有效IP数(ipnum): 10
 - 负载IP数(num): 10
 - 最大并发请求数(task): 100
+- 响应状态码(code): 200
 - 检查域名(domain): "cloudflaremirrors.com/debian"
 ```shell
 docker run -d \
@@ -81,6 +83,7 @@ docker run -d \
     -e ipnum=10 \
     -e num=10 \
     -e task=100 \
+    -e code=200 \
     -e domain="cloudflaremirrors.com/debian" \
     -p 1234:1234 \
     cmliu/cfnat:latest
