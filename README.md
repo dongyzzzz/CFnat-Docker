@@ -2,7 +2,7 @@
 
 - 命令
 ```shell
-docker run -d --name mycfnat -p 1234:1234 cmliu/cfnat:latest
+docker run -d --name mycfnat --restart always -p 1234:1234 cmliu/cfnat:latest
 ```
 
 - 创建 `docker-compose.yml`
@@ -35,7 +35,7 @@ services:
 - 有效延迟(delay): 160
 - IP类型(ips): 6
 ```shell
-docker run -d -e colo="HKG" -e delay=160 -e ips=6 -p 1234:1234 cmliu/cfnat:latest
+docker run -d -e colo="HKG" -e delay=160 -e ips=6 --restart always -p 1234:1234 cmliu/cfnat:latest
 ```
 
 ----
@@ -47,7 +47,7 @@ docker run -d -e colo="HKG" -e delay=160 -e ips=6 -p 1234:1234 cmliu/cfnat:lates
 - tls: false
 - **本地映射端口: 8080**
 ```shell
-docker run -d -e colo="HKG" -e delay=160 -e ips=4 -e port=80 -e tls=false -p 8080:1234 cmliu/cfnat:latest
+docker run -d -e colo="HKG" -e delay=160 -e ips=4 -e port=80 -e tls=false --restart always -p 8080:1234 cmliu/cfnat:latest
 ```
 
 ----
@@ -56,7 +56,7 @@ docker run -d -e colo="HKG" -e delay=160 -e ips=4 -e port=80 -e tls=false -p 808
 - 有效延迟(delay): 300
 - IP类型(ips): 4
 ```shell
-docker run -d -e colo="SJC,LAX" -e delay=300 -e ips=4 -p 1234:1234 cmliu/cfnat:latest
+docker run -d -e colo="SJC,LAX" -e delay=300 -e ips=4 --restart always -p 1234:1234 cmliu/cfnat:latest
 ```
 
 ----
@@ -85,6 +85,7 @@ docker run -d \
     -e task=100 \
     -e code=200 \
     -e domain="cloudflaremirrors.com/debian" \
+    --restart always \
     -p 1234:1234 \
     cmliu/cfnat:latest
 ```
