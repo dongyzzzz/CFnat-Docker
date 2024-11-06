@@ -1,11 +1,21 @@
 # CFnat-Docker
 
-- 命令
+## 使用方法
+### 一键命令
+
+- 官方仓库拉取
+
 ```shell
 docker run -d --name mycfnat --restart always -p 1234:1234 cmliu/cfnat:latest
 ```
 
-- 创建 `docker-compose.yml`
+- 镜像仓库拉取
+
+```shell
+docker run -d --name mycfnat --restart always -p 1234:1234 docker.fxxk.dedyn.io/cmliu/cfnat:latest
+```
+
+### 创建 `docker-compose.yml`
 ```yml
 version: '3'
 
@@ -103,15 +113,15 @@ services:
             environment:
                   - colo=HKG  # 筛选数据中心例如 HKG,SJC,LAX.电信/联通 推荐 SJC,LAX.移动/广电 推荐 HKG
                   - delay=160  # 有效延迟（毫秒），超过此延迟将断开连接
-                  - ips=4  # 指定生成IPv4还是IPv6地址
+                  #- ips=4  # 指定生成IPv4还是IPv6地址
                   - port=443  # 转发的目标端口
-                  # - tls=true  # 是否为 TLS 端口
-                  # - random=true  # 是否随机生成IP，如果为false，则从CIDR中拆分出所有IP
-                  # - ipnum=10  # 提取的有效IP数量
-                  # - num=10  # 目标负载 IP 数量
-                  # - task=100  # 并发请求最大协程数
-                  # - code=200  # HTTP/HTTPS 响应状态码
-                  # - domain=cloudflaremirrors.com/debian # 响应状态码检查的域名地址
+                  #- tls=true  # 是否为 TLS 端口
+                  #- random=true  # 是否随机生成IP，如果为false，则从CIDR中拆分出所有IP
+                  #- ipnum=10  # 提取的有效IP数量
+                  #- num=10  # 目标负载 IP 数量
+                  - task=64  # 并发请求最大协程数
+                  #- code=200  # HTTP/HTTPS 响应状态码
+                  #- domain=cloudflaremirrors.com/debian # 响应状态码检查的域名地址
             ports:
                   - "443:1234"  # 将主机的 443 端口映射到容器的 1234 端口
             restart: always
@@ -122,15 +132,15 @@ services:
             environment:
                   - colo=HKG  # 筛选数据中心例如 HKG,SJC,LAX.电信/联通 推荐 SJC,LAX.移动/广电 推荐 HKG
                   - delay=160  # 有效延迟（毫秒），超过此延迟将断开连接
-                  - ips=4  # 指定生成IPv4还是IPv6地址
+                  #- ips=4  # 指定生成IPv4还是IPv6地址
                   - port=80  # 转发的目标端口
                   - tls=false  # 是否为 TLS 端口
-                  # - random=true  # 是否随机生成IP，如果为false，则从CIDR中拆分出所有IP
-                  # - ipnum=10  # 提取的有效IP数量
-                  # - num=10  # 目标负载 IP 数量
-                  # - task=100  # 并发请求最大协程数
-                  # - code=200  # HTTP/HTTPS 响应状态码
-                  # - domain=cloudflaremirrors.com/debian # 响应状态码检查的域名地址
+                  #- random=true  # 是否随机生成IP，如果为false，则从CIDR中拆分出所有IP
+                  #- ipnum=10  # 提取的有效IP数量
+                  #- num=10  # 目标负载 IP 数量
+                  - task=64  # 并发请求最大协程数
+                  #- code=200  # HTTP/HTTPS 响应状态码
+                  #- domain=cloudflaremirrors.com/debian # 响应状态码检查的域名地址
             ports:
                   - "80:1234"  # 将主机的 80 端口映射到容器的 1234 端口
             restart: always
@@ -141,15 +151,15 @@ services:
             environment:
                   - colo=SJC,LAX  # 筛选数据中心例如 HKG,SJC,LAX.电信/联通 推荐 SJC,LAX.移动/广电 推荐 HKG
                   - delay=300  # 有效延迟（毫秒），超过此延迟将断开连接
-                  - ips=4  # 指定生成IPv4还是IPv6地址
+                  #- ips=4  # 指定生成IPv4还是IPv6地址
                   - port=443  # 转发的目标端口
-                  # - tls=true  # 是否为 TLS 端口
-                  # - random=true  # 是否随机生成IP，如果为false，则从CIDR中拆分出所有IP
-                  # - ipnum=10  # 提取的有效IP数量
-                  # - num=10  # 目标负载 IP 数量
-                  # - task=100  # 并发请求最大协程数
-                  # - code=200  # HTTP/HTTPS 响应状态码
-                  # - domain=cloudflaremirrors.com/debian # 响应状态码检查的域名地址
+                  #- tls=true  # 是否为 TLS 端口
+                  #- random=true  # 是否随机生成IP，如果为false，则从CIDR中拆分出所有IP
+                  #- ipnum=10  # 提取的有效IP数量
+                  #- num=10  # 目标负载 IP 数量
+                  - task=64  # 并发请求最大协程数
+                  #- code=200  # HTTP/HTTPS 响应状态码
+                  #- domain=cloudflaremirrors.com/debian # 响应状态码检查的域名地址
             ports:
                   - "1234:1234"  # 将主机的 1234 端口映射到容器的 1234 端口
             restart: always
