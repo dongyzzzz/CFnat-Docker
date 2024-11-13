@@ -8,6 +8,10 @@ CFnat 是一款自动查找并优化 Cloudflare IP 转发的工具，旨在**解
 
 CFnat 使用场景也**必须是在国内机子长期上运行！必须是在国内机子长期上运行！必须是在国内机子长期上运行！！！**
 
+- **视频教程：[CFnat Docker篇 多开数据中心！最强官方优选！Cloudflare优选新思路，专治泛播IP动态路由，提升网络体验！](https://youtu.be/_GVqBaSzVwo)**
+- **相关项目：[CFnat-Windows-GUI](https://github.com/cmliu/CFnat-Windows-GUI)**
+- **Telegram交流群：[@CMLiussss](https://t.me/CMLiussss)**
+
 ## 免责声明
 CFnat 相关项目仅供教育、研究和安全测试目的而设计和开发。本项目旨在为安全研究人员、学术界人士及技术爱好者提供一个探索和实践网络通信技术的工具。
 
